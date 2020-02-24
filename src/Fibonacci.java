@@ -1,5 +1,13 @@
 public class Fibonacci {
-    public int fib(int n) {
+
+    // O(n!) algo
+    int fibonacciRecursion(int n) {
+        if (n < 3) return 1;
+        else return fibonacciRecursion(n - 1) + fibonacciRecursion(n - 2);
+    }
+
+    // O(n) algo using loop and holding previous 2 data
+    public int fibonacciON(int n) {
         int minusTwo = 1, minusOne = 1, answer = 2;
         if (n < 3)
             return 1;
@@ -11,12 +19,9 @@ public class Fibonacci {
         return answer;
     }
 
-    int fibRec(int n) {
-
-        if (n < 3) return 1;
-        else return fibRec(n - 1) + fibRec(n - 2);
-    }
-
+    // O(logN) algo for fibonacci
+    // using matrix exponentiation to calculate fibonacci number => [f(n), f(n-1)] = [[1,1],[1,0]]^(n-1)*[f(1), [f(0)]]
+    // more: https://www.youtube.com/watch?v=EEb6JP3NXBI&list=PLMCXHnjXnTnto1pZVvH7rbZ9W5neZ7Yhc&index=3
     public int fibonacciMatrix(int x) {
         int[][] in = {
                 {1, 1},
